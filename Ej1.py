@@ -1,7 +1,8 @@
-archivo = open("input1.txt","r")
 
 lista = []
 
+
+#Contar la "logitud" de nuetra matriz
 def cuentaLineas(nombreArchivo):
     archivo = open(str(nombreArchivo), "r")
     numLineas = len(archivo.readlines())
@@ -9,7 +10,7 @@ def cuentaLineas(nombreArchivo):
 
 
 
-
+# Contar holas en posicion verticañ
 def contarVerticales(longitudMatriz,nombreArchivo):
     numeroHola = 0
 
@@ -20,9 +21,6 @@ def contarVerticales(longitudMatriz,nombreArchivo):
     numeroHola+=lista.count("hola")
     archivo.close()
     return numeroHola
-
-
-
 
 
 # Contar holas en posicion horizontal
