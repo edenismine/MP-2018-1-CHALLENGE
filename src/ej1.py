@@ -1,42 +1,11 @@
 if __name__ == '__main__':
-    lista = []
-
-
-    # Contar la "logitud" de nuetra matriz
-    def cuentaLineas(nombreArchivo):
-        archivo = open(str(nombreArchivo), "r")
-        numLineas = len(archivo.readlines())
-        return numLineas
-
-
-    # Contar holas en posicion verticañ
-    def contarVerticales(longitudMatriz, nombreArchivo):
-        numeroHola = 0
-
-        archivo = open(str(nombreArchivo), "r")
-        for j in range(longitudMatriz):
-            for i in archivo.readlines():
-                lista.append(i[0].lower())
-        numeroHola += lista.count("hola")
-        archivo.close()
-        return numeroHola
-
-
-    # Contar holas en posicion horizontal
-    def contarHorizontales(nombreArchivo):
-        numeroHola = 0
-        archivo = open(str(nombreArchivo), "r")
-        for i in archivo.readlines():
-            i = i.lower()
-            numeroHola += i.count("hola")
-        archivo.close()
-        return numeroHola
-
-
-    print(contarHorizontales("input1.txt"))
-    print(contarVerticales(cuentaLineas("input1.txt"), "input1.txt"))
-
-    totalHolas = contarHorizontales("input1.txt") + contarVerticales(
-        cuentaLineas("input1.txt"), "input1.txt")
-
-    print(totalHolas)
+    with open('input1.txt') as input_file:
+        rows = [row.strip().lower() for row in input_file.readlines()]
+        cols = [''.join(row) for row in zip(*rows)]
+        rev_rows = [row[::-1] for row in rows]
+        rev_cols = [col[::-1] for col in cols]
+    count = 0
+    for direction in [rows, cols, rev_rows, rev_cols]:
+        for strip in direction:
+            count += strip.count('hola')
+    print(f'The soup contains the word "hola" {count} times.')
