@@ -12,3 +12,15 @@ class Clock(object):
 
     def __eq__(self, other):
         return repr(self) == repr(other)
+
+    def mirrored(self):
+        hour, minute = tuple(map(int,self.__repr__().split(':')))
+        hour = abs(12-(hour % 12))
+        minute = abs((60-minute) % 60)
+        return Clock(hour,minute)
+
+if __name__ == '__main__':
+    h, m = tuple(map(int, input("Enter the time using the following "
+                                "format> hh:mm\n").strip().split(':')))
+    c = Clock(h,m)
+    print(c.mirrored())
