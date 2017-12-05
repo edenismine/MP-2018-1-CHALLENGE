@@ -1,43 +1,42 @@
-
-lista = []
-
-
-#Contar la "logitud" de nuetra matriz
-def cuentaLineas(nombreArchivo):
-    archivo = open(str(nombreArchivo), "r")
-    numLineas = len(archivo.readlines())
-    return numLineas
+if __name__ == '__main__':
+    lista = []
 
 
+    # Contar la "logitud" de nuetra matriz
+    def cuentaLineas(nombreArchivo):
+        archivo = open(str(nombreArchivo), "r")
+        numLineas = len(archivo.readlines())
+        return numLineas
 
-# Contar holas en posicion verticañ
-def contarVerticales(longitudMatriz,nombreArchivo):
-    numeroHola = 0
 
-    archivo = open(str(nombreArchivo), "r")
-    for j in range(longitudMatriz):
+    # Contar holas en posicion verticañ
+    def contarVerticales(longitudMatriz, nombreArchivo):
+        numeroHola = 0
+
+        archivo = open(str(nombreArchivo), "r")
+        for j in range(longitudMatriz):
+            for i in archivo.readlines():
+                lista.append(i[0].lower())
+        numeroHola += lista.count("hola")
+        archivo.close()
+        return numeroHola
+
+
+    # Contar holas en posicion horizontal
+    def contarHorizontales(nombreArchivo):
+        numeroHola = 0
+        archivo = open(str(nombreArchivo), "r")
         for i in archivo.readlines():
-            lista.append(i[0].lower())
-    numeroHola+=lista.count("hola")
-    archivo.close()
-    return numeroHola
+            i = i.lower()
+            numeroHola += i.count("hola")
+        archivo.close()
+        return numeroHola
 
 
-# Contar holas en posicion horizontal
-def contarHorizontales(nombreArchivo):
-    numeroHola = 0
-    archivo = open(str(nombreArchivo), "r")
-    for i in archivo.readlines():
-        i = i.lower()
-        numeroHola+=i.count("hola")
-    archivo.close()
-    return numeroHola
+    print(contarHorizontales("input1.txt"))
+    print(contarVerticales(cuentaLineas("input1.txt"), "input1.txt"))
 
+    totalHolas = contarHorizontales("input1.txt") + contarVerticales(
+        cuentaLineas("input1.txt"), "input1.txt")
 
-print(contarHorizontales("input1.txt"))
-print(contarVerticales(cuentaLineas("input1.txt"),"input1.txt"))
-
-
-totalHolas = contarHorizontales("input1.txt") + contarVerticales(cuentaLineas("input1.txt"),"input1.txt")
-
-print(totalHolas)
+    print(totalHolas)
