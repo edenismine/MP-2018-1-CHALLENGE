@@ -1,6 +1,6 @@
 ---
 # yaml header used for pandoc exporting
-title: 'Modeling and Programming 2018-1: Ninth lab practice'
+title: 'Modeling and Programming 2018-1: Coding Challenge'
 author:
 -'Luis Daniel Aragon Bermudez 416041271'
 -'Felipe Luna Vazquez'
